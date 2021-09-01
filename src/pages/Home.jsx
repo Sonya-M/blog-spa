@@ -30,7 +30,7 @@ function PostItem(props) {
   return (
     < ListGroupItem >
       <Link to={"/posts/" + props.id}>
-        <p className="display-6">Title: {props.title}</p>
+        <p className="display-6">{props.title}</p>
       </Link>
       <p>{truncateString(props.body, 10)}</p>
       <p>Author id: {props.authorId}</p>

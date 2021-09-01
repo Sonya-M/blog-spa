@@ -12,6 +12,8 @@ import ErrorDisplay from "./partials/ErrorDisplay";
 import Post from "./entities/Post";
 import Author from "./entities/Author";
 
+import Communicator from "./services/Communicator";
+
 import { Container } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,10 +38,31 @@ const DUMMY_AUTHORS = [
 
 function App() {
 
-  const [posts, setPosts] = useState(DUMMY_POSTS);
-  const [authors, setAuthors] = useState(DUMMY_AUTHORS);
+  const [posts, setPosts] = useState([]);
+  const [authors, setAuthors] = useState([]);
 
 
+  useEffect(() => {
+    Communicator.fetchAllPosts()
+      .then((response) => {
+        console.log(response);
+        setPosts(response);
+      });
+  }, []);
+
+  useEffect(() => {
+    Communicator.fetchAllAuthors()
+      .then((response) => {
+        console.log(response);
+        setAuthors(response);
+      });
+  }, []);
+
+  if (!authors || authors.length === 0 || !posts || posts.length === 0) {
+    return (
+      <div>Loading...</div>
+    );
+  }
   return (
     <Container fluid id="blog-sap">
       <BlogNav />

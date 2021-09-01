@@ -10,7 +10,7 @@ export default function PostsByAuthor(props) {
       {
         allPosts.map(post => {
           return (
-            <Link to={"/posts/" + post.id}>
+            <Link to={"/posts/" + post.id} key={post.id}>
               <p>{post.title} </p>
             </Link>
           );
