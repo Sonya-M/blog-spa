@@ -16,6 +16,7 @@ import { Container } from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.scss";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 
 const DUMMY_POSTS = [
@@ -47,11 +48,30 @@ function App() {
           <Home posts={posts} />
         </Route> {/* list all posts */}
         <Route exact path="/posts/new" component={NewPostForm} />
-        <Route exact path="/posts/:id" component={SinglePost} />
+
+        {/* NB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        to match the id of the path, use the `useParams()` hook:
+        (see also the implementation of SinglePost & SingleAuthor)
+        https://reactrouter.com/web/api/Hooks/useparams */}
+        <Route exact path="/posts/:id">
+          <SinglePost
+            posts={posts}
+            authors={authors}
+          />
+        </Route>
+
         <Route exact path="/authors">
           <Authors authors={authors} />
         </Route>
-        <Route exact path="/authors/:id" component={SingleAuthor} />
+
+        {/* !!! see comment for Route to SinglePost above !!! */}
+        <Route exact path="/authors/:id">
+          <SingleAuthor
+            posts={posts}
+            authors={authors}
+          />
+        </Route>
+
         <Route exact path="/about" component={About} />
         <Route exact path="/posts">
           <Redirect to="/" />
