@@ -17,7 +17,6 @@ class Communicator {
         }).then((rawJSON) => {
           return rawJSON.map(post => Mapper.mapJsonToPost(post))
         })
-        .then(posts => console.log(posts)) // TODO: delete this line
     );
   }
 
@@ -33,7 +32,6 @@ class Communicator {
         }).then(rawJSON => {
           return rawJSON.map(user => Mapper.mapJsonToAuthor(user))
         })
-        .then(users => console.log(users)) // TODO: delete this line
     )
   }
 
@@ -78,8 +76,7 @@ class Communicator {
         .then((rawJSON) => {
           return rawJSON.map(post => Mapper.mapJsonToPost(post))
         })
-        .then(posts => console.log("All posts by author: ", posts)) // TODO: delete this line
-    )
+    );
   }
 
   /**
@@ -97,8 +94,7 @@ class Communicator {
           }
         })
         .then(rawJSON => Mapper.mapJsonToAuthor(rawJSON))
-        .then(author => console.log(author)) // TODO:delete this line
-    )
+    );
   }
 
 }

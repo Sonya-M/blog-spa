@@ -1,3 +1,4 @@
+import { toProperCase } from "../shared/utils";
 class Post {
   constructor(authorId, title, body, id) {
     this._authorId = authorId;
@@ -10,7 +11,7 @@ class Post {
 
   get id() { return this._id; }
 
-  get title() { return this._title; }
+  get title() { return toProperCase(this._title); }
 
   get body() { return this._body; }
 }

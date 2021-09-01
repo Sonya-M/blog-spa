@@ -16,7 +16,7 @@ class Mapper {
    * @returns {Author}
    * */
   static mapJsonToAuthor(user) {
-    console.log(user)
+    // console.log(user)
     return new Author(user.id, user.name, user.username, user.email,
       user.phone, user.address.street, user.address.city, user.address.zipcode, user.address.geo.lat, user.address.geo.lng,
       user.company.name, user.company.catchPhrase);
