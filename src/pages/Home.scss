@@ -1,0 +1,13 @@
+#blog-sap {
+  .Home, .Authors {
+    margin: 4rem;
+    a {
+      text-decoration: none;
+    }
+    .list-group-item {
+      &:hover {
+        background-color: rgba(246, 244, 244, 0.918);
+      }
+    }
+  }
+}

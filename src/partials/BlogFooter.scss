@@ -1,0 +1,17 @@
+@import "../sass-shared/variables";
+
+$footer-height: 2.4rem;
+
+#blog-sap {
+  footer.BlogFooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: $navbarColor;
+    color: white;
+    width: 100vw;
+    height: $footer-height;
+    line-height: $footer-height;
+    text-align: center;
+  }
+}
