@@ -3,7 +3,7 @@ import "./BlogFooter.scss";
 
 function BlogFooter(props) {
   return (
-    <footer className="BlogFooter">Footer goes here</footer>
+    <footer className="BlogFooter">@</footer>
   )
 }
 

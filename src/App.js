@@ -19,6 +19,7 @@ import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.scss";
 import { propTypes } from "react-bootstrap/esm/Image";
+import { getLargeRandomInteger } from "./shared/utils";
 
 
 const DUMMY_POSTS = [
@@ -41,6 +42,40 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [authors, setAuthors] = useState([]);
 
+  function addPost(post) {
+    // post.authorId = 1; // not handling adding new authors, so make 1 the default
+    if (post.id) {
+      editPost(post);
+      return;
+    }
+    const newPost = new Post(post.authorId, post.title, post.body,
+      getLargeRandomInteger(100));
+    setPosts((prevPosts) => (
+      [newPost, ...prevPosts]
+    ));
+  }
+
+  function editPost(post) {
+    if (posts.findIndex(p => p.id === post.id) === -1) {
+      throw new Error("editPost: no post with that id");
+    }
+    const newPost = new Post(post.authorId, post.title, post.body,
+      getLargeRandomInteger(100)); // set new id
+    setPosts((prevPosts) => (
+      [newPost, ...(prevPosts.filter(p => p.id !== post.id))]
+    ));
+  }
+
+  function deletePost(postId) {
+    if (posts.findIndex(p => p.id === postId) === -1) {
+      throw new Error("editPost: no post with that id");
+    }
+    setPosts(posts.filter(p => p.id !== +postId));
+  }
+
+  const isValidAuthorId = (id) => {
+    return (authors.findIndex(author => author.id === id) !== -1);
+  };
 
   useEffect(() => {
     Communicator.fetchAllPosts()
@@ -58,6 +93,7 @@ function App() {
       });
   }, []);
 
+
   if (!authors || authors.length === 0 || !posts || posts.length === 0) {
     return (
       <div>Loading...</div>
@@ -68,9 +104,19 @@ function App() {
       <BlogNav />
       <Switch>
         <Route exact path="/">
-          <Home posts={posts} />
+          <Home
+            posts={posts}
+            onDelete={deletePost}
+          />
         </Route> {/* list all posts */}
-        <Route exact path="/posts/new" component={NewPostForm} />
+
+        <Route exact path="/new/:id">
+          <NewPostForm
+            validator={isValidAuthorId}
+            onAddPost={addPost}
+            posts={posts}
+          />
+        </Route>
 
         {/* NB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         to match the id of the path, use the `useParams()` hook:

@@ -8,3 +8,7 @@ export function toProperCase(str) {
   result = words.map(word => word[0].toUpperCase() + (word.slice(1)).toLowerCase());
   return result.join(" ");
 }
+
+export function getLargeRandomInteger(min) {
+  return (Math.ceil(Math.random() * 100000000000)) + min;
+}

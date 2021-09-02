@@ -1,23 +1,24 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-
 import { truncateString } from "../shared/utils";
-
 import { ListGroup, ListGroupItem } from "react-bootstrap";
+import EditPostBtn from "../partials/EditPostBtn";
 import "./Home.scss";
 
 export default function Home(props) {
+
+  const handleDelete = (id) => {
+    props.onDelete(id);
+  }
   return (
     <div className="Home">
       <h1 className="display-3 text-center">All Posts</h1>
       <ListGroup>
         {props.posts.map((post =>
           <PostItem
-            title={post.title}
-            body={post.body}
-            authorId={post.authorId}
+            post={post}
             key={post.id}
-            id={post.id}
+            onDelete={handleDelete}
           />))
         }
       </ListGroup>
@@ -26,15 +27,19 @@ export default function Home(props) {
 }
 
 function PostItem(props) {
-
+  const { post } = props;
   return (
     < ListGroupItem >
-      <Link to={"/posts/" + props.id}>
-        <p className="display-6">{props.title}</p>
+      <Link to={"/posts/" + post.id}>
+        <p className="display-6">{post.title}</p>
       </Link>
-      <p>{truncateString(props.body, 10)}</p>
-      <p>Author id: {props.authorId}</p>
-    </ListGroupItem>
+      <p>{truncateString(post.body, 40)}</p>
+      <p>Author id: {post.authorId}</p>
+      <EditPostBtn id={post.id} />
+      {" "}
+      <button className="btn btn-danger"
+        onClick={() => props.onDelete(post.id)}>Delete</button>
+    </ListGroupItem >
 
   )
 }
