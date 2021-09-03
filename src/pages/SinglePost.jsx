@@ -1,5 +1,4 @@
-import { all } from "q";
-import React, { Fragment } from "react";
+import React from "react";
 
 import PostsByAuthor from "../partials/PostsByAuthor";
 import PostDiv from "../partials/PostDiv";
@@ -16,14 +15,11 @@ export default function SinglePost(props) {
   const { id } = useParams();
   const postId = parseInt(id);
   const selectedPost = props.posts.find(post => post.id === postId);
-  const author = props.authors.find(author => author.id == selectedPost.authorId);
+  const author = props.authors.find(author => author.id === selectedPost.authorId);
 
   const allOtherPostsByAuthor = props.posts.filter(post => {
     return post.authorId === author.id && post.id !== postId;
   });
-
-  console.log("author: ", author)
-  // console.log("selectedPost: ", selectedPost)
 
   return (
     <div className="SinglePost m-3">

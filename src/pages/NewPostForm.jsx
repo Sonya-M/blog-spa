@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
@@ -14,8 +14,6 @@ export default function NewPostForm(props) {
     : { authorId: "", title: "", body: "" };
   const [postInput, setPostInput] = useState(initialFormState);
   const [message, setMessage] = useState("");
-
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
