@@ -47,7 +47,7 @@ function App() {
     const liked = (posts.find(p => p.id === post.id)).isLiked();
 
     const newPost = new Post(post.authorId, post.title, post.body,
-      getQuickAndDirtyPostId()); // set new id
+      post.id); // set new id
     if (liked) newPost.like();
     setPosts((prevPosts) => (
       [newPost, ...(prevPosts.filter(p => p.id !== post.id))]
