@@ -36,7 +36,7 @@ export default function NewPostForm(props) {
       return;
     }
     props.onAddPost({ ...postInput, id: +id, authorId: +postInput.authorId });
-    history.push("/");
+    history.push("/blog-sap");
   };
 
   return (
