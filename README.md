@@ -1,3 +1,6 @@
+## Project description
+A simple mock blog site with basic CRUD functionality.
+
 ## File structure
 `/pages`: all pages
 `/partials`: partial jsx components
