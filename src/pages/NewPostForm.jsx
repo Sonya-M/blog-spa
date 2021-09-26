@@ -3,14 +3,17 @@ import { useHistory, useParams } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
 export default function NewPostForm(props) {
-
   let history = useHistory();
   let { id } = useParams(); // post ID
 
-  let selectedPost = props.posts.find(post => post.id === (+id));
+  let selectedPost = props.posts.find((post) => post.id === +id);
 
   const initialFormState = selectedPost
-    ? { authorId: selectedPost.authorId, title: selectedPost.title, body: selectedPost.body }
+    ? {
+        authorId: selectedPost.authorId,
+        title: selectedPost.title,
+        body: selectedPost.body,
+      }
     : { authorId: "", title: "", body: "" };
   const [postInput, setPostInput] = useState(initialFormState);
   const [message, setMessage] = useState("");
@@ -27,7 +30,8 @@ export default function NewPostForm(props) {
       setMessage("Please fill out all the fields!");
       return;
     }
-    if (!props.validator(+postInput.authorId)) { // convert string input to number with a + sign!!!
+    if (!props.validator(+postInput.authorId)) {
+      // convert string input to number with a + sign!!!
       setMessage("Invalid author ID!");
       return;
     }
@@ -68,6 +72,6 @@ export default function NewPostForm(props) {
         <p>{message}</p>
         <button className="btn btn-primary m-2">Submit</button>
       </form>
-    </div >
+    </div>
   );
 }

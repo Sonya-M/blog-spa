@@ -12,6 +12,7 @@ import ErrorDisplay from "./partials/ErrorDisplay";
 import Post from "./entities/Post";
 import Communicator from "./services/Communicator";
 import { getQuickAndDirtyPostId } from "./shared/utils";
+import LoaderRipple from "./partials/LoaderRipple";
 
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,7 +24,7 @@ function App() {
   const [authors, setAuthors] = useState([]);
 
   function addPost(post) {
-    //TODO: should communicate with server
+    //should communicate with server, but it's a mock server...
     if (post.id) {
       editPost(post);
       return;
@@ -40,7 +41,7 @@ function App() {
   }
 
   function editPost(post) {
-    //TODO: should communicate with server
+    //should communicate with server, but it's a mock server...
     console.assert(postInDatabase(post.id));
 
     console.log(typeof post.id === typeof posts[0].id); // true
@@ -92,7 +93,7 @@ function App() {
 
   if (!authors || authors.length === 0 || !posts || posts.length === 0) {
     return (
-      <div>Loading...</div>
+      <LoaderRipple />
     );
   }
   return (
