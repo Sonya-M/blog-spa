@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/blog-sap/static/css/main.8b3f7c91.chunk.css",
+    "main.js": "/blog-sap/static/js/main.20e57637.chunk.js",
+    "main.js.map": "/blog-sap/static/js/main.20e57637.chunk.js.map",
+    "runtime-main.js": "/blog-sap/static/js/runtime-main.26ef9fd2.js",
+    "runtime-main.js.map": "/blog-sap/static/js/runtime-main.26ef9fd2.js.map",
+    "static/css/2.818011ed.chunk.css": "/blog-sap/static/css/2.818011ed.chunk.css",
+    "static/js/2.2fe0431d.chunk.js": "/blog-sap/static/js/2.2fe0431d.chunk.js",
+    "static/js/2.2fe0431d.chunk.js.map": "/blog-sap/static/js/2.2fe0431d.chunk.js.map",
+    "index.html": "/blog-sap/index.html",
+    "static/css/2.818011ed.chunk.css.map": "/blog-sap/static/css/2.818011ed.chunk.css.map",
+    "static/css/main.8b3f7c91.chunk.css.map": "/blog-sap/static/css/main.8b3f7c91.chunk.css.map",
+    "static/js/2.2fe0431d.chunk.js.LICENSE.txt": "/blog-sap/static/js/2.2fe0431d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.26ef9fd2.js",
+    "static/css/2.818011ed.chunk.css",
+    "static/js/2.2fe0431d.chunk.js",
+    "static/css/main.8b3f7c91.chunk.css",
+    "static/js/main.20e57637.chunk.js"
+  ]
+}
