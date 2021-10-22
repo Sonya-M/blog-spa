@@ -1,6 +1,6 @@
 {
-  "homepage": "https://sonya-m.github.io/blog-sap/",
-  "name": "blog-sap",
+  "homepage": "https://sonya-m.github.io/blog-spa/",
+  "name": "blog-spa",
   "version": "0.1.0",
   "private": false,
   "dependencies": {

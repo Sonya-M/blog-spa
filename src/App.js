@@ -97,10 +97,10 @@ function App() {
     );
   }
   return (
-    <Container fluid id="blog-sap">
+    <Container fluid id="blog-spa">
       <BlogNav />
       <Switch>
-        <Route exact path="/blog-sap">
+        <Route exact path="/blog-spa">
           <Home
             posts={posts}
             onDelete={deletePost}
@@ -141,7 +141,7 @@ function App() {
 
         <Route exact path="/about" component={About} />
         <Route exact path="/posts">
-          <Redirect to="/blog-sap" />
+          <Redirect to="/blog-spa" />
         </Route>
         <Route>
           <ErrorDisplay message="Page not found" />

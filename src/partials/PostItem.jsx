@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { ListGroupItem, Button } from "react-bootstrap";
@@ -10,36 +9,41 @@ import { truncateString } from "../shared/utils";
 export default function PostItem(props) {
   const { post } = props;
   return (
-    < ListGroupItem >
+    <ListGroupItem>
       <Link to={"/posts/" + post.id}>
-        <p className="display-6">{post.title}</p>
+        <h6 className="display-6">{post.title}</h6>
       </Link>
       <p>{truncateString(post.body, 40)}</p>
       <p>Author ID: {post.authorId}</p>
       <Link to={"/new/" + post.id}>
-        <Button size="sm" className="btn btn-primary">Edit</Button>
-      </Link>
-      {" "}
-      <Button className="btn-danger btn-sm"
-        onClick={() => props.onDelete(post.id)}>Delete</Button>
-      {" "}
-      < LikeBtn
+        <Button size="sm" className="btn btn-primary">
+          Edit
+        </Button>
+      </Link>{" "}
+      <Button
+        className="btn-danger btn-sm"
+        onClick={() => props.onDelete(post.id)}
+      >
+        Delete
+      </Button>{" "}
+      <LikeBtn
         onLike={props.onLike}
         color={post.isLiked() ? "plum" : "lightgray"}
       />
-    </ListGroupItem >
-
-  )
+    </ListGroupItem>
+  );
 }
 
 const LikeBtn = (props) => {
   const cursorStyle = { cursor: "pointer" };
   const colorStyle = { color: props.color };
   return (
-    <span >
-      <HeartFill size="2rem"
+    <span>
+      <HeartFill
+        size="2rem"
         onClick={props.onLike}
         style={{ ...cursorStyle, ...colorStyle }}
       />
-    </span>)
-}
+    </span>
+  );
+};
